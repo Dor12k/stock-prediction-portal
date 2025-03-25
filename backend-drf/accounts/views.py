@@ -26,4 +26,3 @@ class ProtectedView(APIView):
         return Response(response)
     
 
-    

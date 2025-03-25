@@ -5,6 +5,8 @@ import React from 'react'
 import Button from './Button'
 // import { Link, useNavigate } from 'react-router-dom'
 // import { AuthContext } from '../AuthProvider'
+import { Link } from 'react-router-dom'
+
 
 const Header = () => {
 
@@ -24,9 +26,7 @@ const Header = () => {
 
         <nav className='navbar container pt-3 pb-3 align-items-start'>
             
-            <a className='navbar-brand text-light' href="">Stock Prediction</a>
-
-            {/* <Link className='navbar-brand text-light' to="/">Stock Prediction Portal</Link> */}
+            <Link className='navbar-brand text-light' to="/">Stock Prediction Portal</Link>
             
             {/* <div>
                 {isLoggedIn ? (
