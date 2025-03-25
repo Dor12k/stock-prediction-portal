@@ -13,6 +13,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 
 import AuthProvider from './AuthProvider'
+import Dashboard from './components/dashboard/dashboard'
 
 
 function App() {
@@ -24,12 +25,14 @@ function App() {
         <BrowserRouter >
             <Header />
               <Routes>
+
                 <Route path='/' element={<Main/>} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                {/* <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} /> */}
-                {/* <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
-                <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} /> */}
+
+                <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} />
+                <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
+
+                <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+
               </Routes>
             <Footer />
           </BrowserRouter>
