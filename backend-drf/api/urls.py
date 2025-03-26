@@ -2,10 +2,14 @@
 from django.urls import path
 from accounts import views as UserViews
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-# from .views import StockPredictionAPIView
+from .views import StockPredictionAPIView
+from django.http import JsonResponse
 
+def home(request):
+    return JsonResponse({"message": "API is running!"})
 
 urlpatterns = [
+    
     path('register/', UserViews.RegisterView.as_view()),
 
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -13,7 +17,7 @@ urlpatterns = [
 
     path('protected-view/', UserViews.ProtectedView.as_view()),
 
-    # # Prediction API
-    # path('predict/', StockPredictionAPIView.as_view(), name='stock_prediction')
+    # Prediction API
+    path('predict/', StockPredictionAPIView.as_view(), name='stock_prediction')
 
 ]

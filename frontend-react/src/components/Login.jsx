@@ -1,13 +1,12 @@
 
 
 import React, {useContext, useState} from 'react'
-// import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { AuthContext } from '../AuthProvider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import axiosInstance from '../axiosInstance'
-
+// import axiosInstance from '../axiosInstance'
+import axios from 'axios'
 
 const Login = () => {
   
@@ -28,8 +27,7 @@ const Login = () => {
     console.log('userData==>', userData);
 
     try{
-      // const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData)
-      const response = await axiosInstance.get('/protected-view/');
+      const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData)
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
       console.log('Login successful');

@@ -15,6 +15,8 @@ import Login from './components/Login'
 import AuthProvider from './AuthProvider'
 import Dashboard from './components/dashboard/dashboard'
 
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 
 function App() {
   

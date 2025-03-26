@@ -1,5 +1,4 @@
 
-
 import axios from "axios";
 
 
@@ -33,10 +32,19 @@ axiosInstance.interceptors.response.use(
     },
     // Handle failed responses
     async function(error){
+
         const originalRequest = error.config;
+
         if(error.response.status === 401 && !originalRequest.retry){
+
             originalRequest.retry = true;
             const refreshToken = localStorage.getItem('refreshToken')
+            
+            if (!refreshToken) {
+                console.error("Refresh token is missing!");
+                return Promise.reject(error);
+            }
+
             try{
                 const response = await axiosInstance.post('/token/refresh/', {refresh: refreshToken})
                 localStorage.setItem('accessToken', response.data.access)
@@ -46,6 +54,8 @@ axiosInstance.interceptors.response.use(
                 error
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('refreshToken')
+                window.location.href = '/login'; // Redirect user to login page
+                // return Promise.reject(error);
             }
         }
         return Promise.reject(error);
@@ -54,4 +64,3 @@ axiosInstance.interceptors.response.use(
 
 
 export default axiosInstance;
-
